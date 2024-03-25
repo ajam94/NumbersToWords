@@ -1,8 +1,37 @@
-﻿@{
+﻿@model NumbersToWords.Models.Number
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
+
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Convert Number to Words</h1>
+    <p>Enter any number at the field below and press 'Convert' button.</p>
 </div>
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+    <div class="border" style="padding-left: 20px; padding-top: 20px; padding-bottom: 30px">
+
+        <div class="row">
+            <div class="col-lg-1 col-md-3">USD</div>
+            <div class="col-lg-3 col-md-4">
+                @Html.TextBoxFor(m => m.Numbers)
+                <input type="submit" name="save" value="Convert" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-1 col-md-3">in Words</div>
+            <div class="col-lg-3 col-md-4">
+                <p>
+                   @Html.DisplayTextFor(m => m.NumberInWord)
+                </p>
+
+            </div>
+        </div>
+    </div>
+}
+
+
